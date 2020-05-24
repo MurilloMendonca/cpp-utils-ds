@@ -46,14 +46,8 @@ class HashLista
 
         }
     }
-    bool pesquisa(int chave, double &tempo, int &comp){
-        comp =0;
-        StartCounter();
-        tempo = GetCounter();
-        bool a = vetor[avaliacao(chave)].pesquisa(chave, comp);
-        tempo = GetCounter() - tempo;
-        return a;
-
+    bool pesquisa(int chave){
+        return vetor[avaliacao(chave)].pesquisa(chave);
     }
 
 
@@ -85,23 +79,17 @@ public:
 
     }
 
-    bool pesquisa(int chave, double &tempo, int &comp)
+    bool pesquisa(int chave)
     {
-        comp =0;
-        StartCounter();
-        tempo = GetCounter();
         int av =avaliacao(chave);
         while(true)
         {
-            comp++;
             if(this->vetor[av].chave==chave)
             {
-                tempo = GetCounter() - tempo;
                 return true;
             }
             else if(this->vetor[av].chave==-1)
             {
-                tempo = GetCounter() - tempo;
                 return false;
             }
             av = (av+1)%tam;

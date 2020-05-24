@@ -5,28 +5,7 @@
 #include<vector>
 #include <stdio.h>
 #include <time.h>
-#include <windows.h>
 
-double PCFreq = 0.0;
-__int64 CounterStart = 0;
-
-void StartCounter()
-{
-    LARGE_INTEGER li;
-    if(!QueryPerformanceFrequency(&li))
-        std::cout << "QueryPerformanceFrequency failed!\n";
-
-    PCFreq = double(li.QuadPart)/1000.0;
-
-    QueryPerformanceCounter(&li);
-    CounterStart = li.QuadPart;
-}
-double GetCounter()
-{
-    LARGE_INTEGER li;
-    QueryPerformanceCounter(&li);
-    return double(li.QuadPart-CounterStart)/PCFreq;
-}
 template <class T>
 class Node
 {
@@ -118,13 +97,10 @@ public:
         return m_search(root,key);
     };
 
-    bool pesquisa(int key, double &tempo, int &comp)
+    bool pesquisa(int key, int &comp)
     {
         comp =0;
-        StartCounter();
-        tempo = GetCounter();
         bool a= m_pesquisa(root,key,comp);
-        tempo = GetCounter() - tempo;
 
         return a;
     };

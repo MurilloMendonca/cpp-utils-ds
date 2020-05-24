@@ -1,9 +1,6 @@
 #ifndef VETORBL_H_INCLUDED
 #define VETORBL_H_INCLUDED
-#include <windows.h>
 #include "Tree.h"
-
-
 
 
 template <class T>
@@ -74,26 +71,19 @@ public:
         return false;
     }
 
-    bool pesquisa(int key, double &tempo, int &comp)
+    bool pesquisa(int key)
     {
-        comp=0;
-        StartCounter();
-        tempo = GetCounter();
         for(int i=0;i<ult;i++){
-            comp++;
             if(key == vetor[i].chave) {
-                tempo = GetCounter() - tempo;
                 return true;
             }
         }
-        tempo = GetCounter() - tempo;
         return false;
     }
 
     Nod<T> operator [](int i){
         return (i<ult)?vetor[i]:Nod<T>();
     }
-
 
 };
 
