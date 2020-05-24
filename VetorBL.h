@@ -1,7 +1,5 @@
 #ifndef VETORBL_H_INCLUDED
 #define VETORBL_H_INCLUDED
-#include "Tree.h"
-
 
 template <class T>
 class Nod
@@ -10,30 +8,15 @@ public:
     T data;
     int chave;
 
-    Nod()
-    {
-        chave = -1;
-    };
+    Nod();
 
-    Nod(T value, int key)
-    {
-        data = value;
-        chave = key;
-    };
+    Nod(T value, int key);
 
-    ~Nod()
-    {
-    };
+    ~Nod();
 
-    void operator= (const Nod<T> &other)
-    {
-        chave = other.chave;
-    };
+    void operator= (const Nod<T> &other);
 
-    bool operator< (T &other)
-    {
-        return (data < other);
-    };
+    bool operator< (T &other);
 };
 
 template<class T>
@@ -42,48 +25,16 @@ public:
     int tam, ult;
     Nod<T> *vetor;
 
-    VetorBL(int t){
-        tam = t;
-        ult = 0;
-        vetor = new Nod<T>[tam];
-    }
-    VetorBL(){
+    VetorBL(int t);
+    VetorBL();
 
-    }
+    bool insere(int chave, T data);
 
-    bool insere(int chave, T data)
-    {
-        if (ult<tam){
-            vetor[ult] = Nod<T> (data, chave);
-            ult++;
-            return true;
-        }
-        return false;
+    bool insere(Nod<T> no);
 
-    }
+    bool pesquisa(int key);
 
-    bool insere(Nod<T> no){
-        if (ult<tam){
-            vetor[ult] = no;
-            ult++;
-            return true;
-        }
-        return false;
-    }
-
-    bool pesquisa(int key)
-    {
-        for(int i=0;i<ult;i++){
-            if(key == vetor[i].chave) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    Nod<T> operator [](int i){
-        return (i<ult)?vetor[i]:Nod<T>();
-    }
+    Nod<T> operator [](int i);
 
 };
 
