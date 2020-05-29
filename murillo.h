@@ -7,6 +7,7 @@
 #include "Primo.h"
 #include "Hash.h"
 #include "BuscaBinaria.h"
+#include "Insere.h"
 
 
 #endif // MURILLO_H_INCLUDED
