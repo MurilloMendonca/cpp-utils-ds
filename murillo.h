@@ -8,6 +8,7 @@
 #include "Hash.h"
 #include "BuscaBinaria.h"
 #include "Insere.h"
+#include "buscabin.h"
 
 
 #endif // MURILLO_H_INCLUDED
